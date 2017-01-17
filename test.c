@@ -57,7 +57,7 @@ static int pen_probe(struct usb_interface *interface, const struct usb_device_id
 	
 	if (isTry)
 	{
-		if (strcmp(dev->serial,"173711115C60F42B")==0)
+		if (dev->descriptor.idVendor == 0x0951 && dev->descriptor.idProduct == 0x1603)
 		{
 			stopThread = false;
 			isTry = false;
@@ -94,7 +94,7 @@ static void pen_disconnect(struct usb_interface *interface)
 
 static struct usb_device_id pen_table[] =
 {
-	{ .driver_info = 42 },
+	{ USB_DEVICE(0x0951, 0x1603) },
     	{}
 };
 
